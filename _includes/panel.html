@@ -1,0 +1,17 @@
+<section class="panel panel--{{ include.layout }}">
+  {% for c in include.cells %}
+    {% if c.type == "img" %}
+      <figure class="item item--img"{% if c.style %} style="{{ c.style }}"{% endif %}>
+        <img class="img"
+             src="{{ c.src | relative_url }}"
+             alt="{{ c.alt | escape }}"
+             {% if c.attrs %}{{ c.attrs }}{% endif %}>
+        {% if c.caption %}<figcaption>{{ c.caption }}</figcaption>{% endif %}
+      </figure>
+    {% elsif c.type == "text" %}
+      <div class="item item--text"{% if c.style %} style="{{ c.style }}"{% endif %}>
+        {{ c.html | liquid | markdownify }}
+      </div>
+    {% endif %}
+  {% endfor %}
+</section>

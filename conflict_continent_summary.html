@@ -1,0 +1,50 @@
+---
+layout: page
+title: Conflict trend across continents
+permalink: /conflict-trend-by-continent/
+bar: vert
+nav_order: 3
+category: continent breakdown 1989-2023
+order: 2
+
+top_top_img:
+  - type: img
+    src: /assets/images/conflict_by_continent/summary/CumulativeContinents.png    
+    alt: "Sumamry"
+    attrs: 'data-behavior="enlarge" data-id="special"'
+
+top_img:
+  - type: img
+    src: /assets/images/placeholder.png    
+    alt: "Top"
+    attrs: 'data-behavior="enlarge" data-id="special"'
+---
+
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+
+
+
+<section class="filter"
+         id="country-filter"
+         data-country-filter-panel
+         data-base="/assets/images/conflict_by_continent/forecast/">
+
+  {% include panel.html layout="col-center" cells=page.top_top_img %}
+
+  <div class="filter-controls-box">
+    <label>Select continent
+      <select id="conflict-select">
+        {% assign files = site.static_files | where_exp: "f", "f.path contains '/assets/images/conflict_by_continent/forecast'" %}
+        {% for f in files %}
+          {% assign name_no_ext = f.name | split: '.' | first %}
+          <option value="{{ f.name }}">{{ name_no_ext }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+
+  {% include panel.html layout="col-center" cells=page.top_img %}
+</section>

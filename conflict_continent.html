@@ -1,0 +1,42 @@
+---
+layout: page
+title: Map of fatalities by continent
+permalink: /map-fatalities-by-continent/
+bar: vert
+nav_order: 3
+category: continent breakdown 1989-2023
+order: 1
+
+panel1:
+  - type: text
+    html: |
+      <div class="year-slider-container">
+        <input type="range" class="range range--panel" data-role="year-slider"
+               min="1989" max="2023" value="1989" step="1" list="year-ticks">
+        <datalist id="year-ticks">
+          {% for y in (1989..2023) %}<option value="{{ y }}"></option>{% endfor %}
+        </datalist>
+        <p data-role="year-label">Year: 1989</p>
+      </div>
+  - type: text
+    html: |
+      <div class="year-images">
+        <div class="map-wrapper">
+          <img data-role="map-image"
+               data-behavior="zoom"
+               data-zoom-reset-on-load="true"
+               alt="Map">
+        </div>
+      </div>
+---
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+<section class="main-content"
+         data-year-panel
+         data-map-template="/assets/images/conflict_by_continent/map/{year}.png">
+
+  {% include panel.html layout="col-center" cells=page.panel1 %}
+
+</section>

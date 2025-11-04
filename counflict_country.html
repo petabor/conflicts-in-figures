@@ -1,0 +1,26 @@
+---
+layout: page
+title: Conflict fatalities by country
+permalink: /conflict-fatalities-by-country/
+bar: vert
+nav_order: 2
+category: country breakdown 1989-2023
+order: 1
+---
+
+
+<div id="flags-grid" class="flags-grid"></div>
+
+<script>
+fetch('/assets/data/countries.json')
+  .then(res => res.json())
+  .then(countries => {
+    const grid = document.getElementById('flags-grid');
+    grid.innerHTML = countries.map(c => `
+      <a href="/country.html?code=${c.code}" class="flag-card">
+        <img src="${c.flag}" alt="${c.name} flag">
+        <p>${c.name}</p>
+      </a>
+    `).join('');
+  });
+</script>

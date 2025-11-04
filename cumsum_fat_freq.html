@@ -1,0 +1,56 @@
+---
+layout: page
+title: Cumulative fatalities and conflict frequeny
+permalink: /cumulative-fatalities-frequency/
+bar: vert
+nav_order: 1
+category: yearly breakdown 1989-2023
+order: 2
+panel1: 
+  - type: img
+    src: /assets/images/countries_by_year/cumsum/cum_deaths/2023.png
+    alt: A
+    attrs: 'data-behavior="zoom"'
+  - type: img
+    src: /assets/images/countries_by_year/cumsum/cum_events/2023.png
+    alt: B
+    attrs: 'data-behavior="zoom"'
+panel2: 
+  - type: img
+    src: /assets/images/countries_by_year/cumsum/top10_cum_death/top10.png
+    alt: Cumulative deaths across years 1989 - 2023
+    attrs: 'data-behavior="enlarge"'
+  - type: img
+    src: /assets/images/countries_by_year/cumsum/top10_cum_events/top10.png
+    alt: D
+    attrs: 'data-behavior="enlarge"'
+---
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+<p>
+This is an overview of the <i>total number of deaths</i> and <i>number of conflicts</i> <strong>accumulating</strong> from <strong>1989 to 2023</strong>. You can zoom in to inspect the details. The end of each bar shows the <strong>raw number</strong> of <strong><i>accumulated deaths (on left) and number of conflicts (on right)</i></strong> across time for each <strong>country</strong> experiencing violence between 1989 to 2023. 
+</p>
+
+
+
+
+
+&emsp;
+
+{% include panel.html layout="col-side-by-side" cells=page.panel1 %}
+
+
+
+&emsp;
+
+### Cumulative trends
+<p>
+Below are shown cumulative trends in the top 10 countries that experienced the largest fatalities (on left) and the most frequent conflict (on right) between years 1989 and 2023. The color coding of each country is perserved across plots. Click on the plot for enlargement.  
+</p>
+
+{% include panel.html layout="col-side-by-side" cells=page.panel2 %}
+
+<!-- {% include panel.html layout="panel--col-center" cells=page.panel2 %}
+{% include panel.html layout="panel--col-center" cells=page.panel3 %} -->

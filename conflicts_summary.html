@@ -1,0 +1,28 @@
+---
+layout: page
+title: Conflicts summary
+permalink: /conflicts-summary/
+bar: vert
+nav_order: 4
+category: Conflicts
+order: 1
+
+top_img:
+  - type: img
+    src: /assets/images/conflicts/summary/conflict_summary.png    # initial, will be swapped by JS
+    alt: "Top"
+    attrs: 'data-behavior="enlarge" data-id="special"'
+bottom_img:
+  - type: img
+    src: /assets/images/conflicts/summary/summary_words.png
+    alt: "Bottom"
+    attrs: 'data-behavior="zoom"'
+---
+
+
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+{% include panel.html layout="col-center" cells=page.top_img %}
+{% include panel.html layout="col-center" cells=page.bottom_img %}

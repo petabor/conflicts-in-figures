@@ -1,0 +1,46 @@
+---
+layout: page
+title: Conflicts between 1989 - 2023
+permalink: /conflicts-filter/
+bar: vert
+nav_order: 4
+category: Conflicts
+order: 2
+
+# Left stacked images (top + total)
+top_img:
+  - type: img
+    src: /assets/images/placeholder.png    # initial, will be swapped by JS
+    alt: "Top"
+    attrs: 'data-behavior="enlarge" data-id="special"'
+bottom_img:
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Bottom"
+    attrs: 'data-behavior="enlarge"'
+---
+
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+
+<section class="filter"
+         data-filter-panel
+         data-base="/assets/images/conflicts/">
+
+  <div class="filter-controls-box">
+    <label>Select conflict
+      <select name="conflict" id="conflict-select">
+        {% assign files = site.static_files | where_exp: "f", "f.path contains '/assets/images/conflicts/fatalities_by_conflict'" %}
+        {% for f in files %}
+          {% assign name_no_ext = f.name | split: '.' | first %}
+          <option value="{{ f.name }}">{{ name_no_ext }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+
+  {% include panel.html layout="col-center" cells=page.top_img %}
+  {% include panel.html layout="col-center" cells=page.bottom_img %}
+</section>

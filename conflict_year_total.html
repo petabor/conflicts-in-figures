@@ -1,0 +1,102 @@
+---
+layout: page
+title: Total fatalities
+permalink: /conflict-fatalities-total/
+bar: vert
+nav_order: 1
+category: yearly breakdown 1989-2023
+order: 1
+panel1: 
+  - type: img
+    src: /assets/images/countries_by_year/summaries/Total_deaths_1989_2023.png
+    alt: A
+    attrs: 'data-behavior="enlarge"'
+  - type: img
+    src: /assets/images/countries_by_year/summaries/Total_conflict_fq_1989_2023.png
+    alt: B
+    attrs: 'data-behavior="enlarge"'
+---
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+
+&emsp;
+
+{% include panel.html layout="col-side-by-side" cells=page.panel1 %}
+
+
+&emsp;
+
+### Description
+
+
+<!-- <div class="main-content-total">
+  <p id="total-text1">The devastating toll of Rwanda in 1994 has hardly any comparison. Almost 12% of the whole population was wiped out. The devastating toll of Rwanda in 1994 has hardly any comparison. Almost 12% of the whole population was wiped out.</p>
+  <div class="total-images">
+    <img id="enlarge-total-img1" src="{{ '/assets/images/countries_by_year/summaries/Total_deaths_1989_2023.png' | relative_url }}" alt="Bar plot">
+    <img id="enlarge-total-img2" src="{{ '/assets/images/countries_by_year/summaries/Total_conflict_fq_1989_2023.png' | relative_url }}" alt="Bar plot">
+  </div>
+  <h2 id="total-title">Description</h2>
+  <p id="total-text2"></p>
+</div>
+
+
+<!-- single modal for all -->
+<!-- <div id="myModal" class="modal" aria-hidden="true">
+  <img class="modal-content" id="img01" alt="">
+  <div id="caption"></div>
+</div> --> 
+
+
+<!-- <script>
+(function () {
+  const modal = document.getElementById('myModal');
+  const modalImg = document.getElementById('img01');
+  const caption = document.getElementById('caption');
+
+  function openModal(src, alt) {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    modalImg.src = src;
+    modalImg.alt = alt || '';
+    caption.textContent = alt || '';
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    modalImg.src = '';
+    caption.textContent = '';
+    document.documentElement.style.overflow = '';
+  }
+
+  // Select all images with IDs that start with "max-box-img"
+  document.querySelectorAll('[id^="enlarge"]').forEach(img => {
+    img.tabIndex = 0; // keyboard focusable
+    img.addEventListener('click', () => openModal(img.src, img.alt));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(img.src, img.alt);
+      }
+    });
+  });
+
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Prevent clicks on the image from closing
+  modalImg.addEventListener('click', e => e.stopPropagation());
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+})();
+</script> -->

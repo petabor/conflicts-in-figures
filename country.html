@@ -1,0 +1,167 @@
+---
+layout: page
+<!-- title: Country -->
+permalink: /country.html
+exclude_from_nav: true
+bar: vert
+category: country breakdown 1989-2023
+nav_order: 2
+order: 2
+
+flag_img:
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Flag"
+    
+txt_object:
+  - type: text
+    html: |
+      <div class="country-text">
+        <h3>Country Profile</h3>
+        <p id="country-summary"></p>
+        <table id="country-info"></table>
+      </div>
+
+map_img:
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Map"
+    attrs: 'data-behavior="zoom"'
+
+main_img:
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Main"
+    attrs: 'data-behavior="zoom"'
+
+dropdown_img:
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Top"
+    attrs: 'data-behavior="enlarge"'
+---
+
+  <!-- flag_img: -->
+     <!-- txt_object: -->
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+<div id="country-content">
+  <h1>Loading...</h1>
+</div>
+
+<section class="filter"
+         id="country-filter"
+         data-country-filter-panel
+         data-base="">
+
+  <!-- <div class="flag-text-row"> -->
+    <!-- {% include panel.html layout="row-txt-by-img" cells=page.panel1 %} -->
+    <!-- {% include panel.html layout="row-img-by-txt" cells=page.txt_object %} -->
+  <!-- </div> -->
+
+  {% include panel.html layout="col-left" cells=page.flag_img %}
+  {% include panel.html layout="col-left" cells=page.txt_object %}
+
+  <div class="map-row">
+    {% include panel.html layout="col-center" cells=page.map_img %}
+  </div>
+
+  {% include panel.html layout="col-center" cells=page.main_img %} 
+
+  <div class="filter-controls-box">
+    <label>Select conflict:
+      <select id="conflict-select"></select>
+    </label>
+  </div>
+
+  {% include panel.html layout="col-center" cells=page.dropdown_img %}
+
+</section>
+
+<script>
+  function getQueryParam(name) {
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  const code = getQueryParam('code');
+
+  fetch('/assets/data/countries.json')
+    .then(res => res.json())
+    .then(countries => {
+      const country = countries.find(c => c.code === code);
+      const container = document.getElementById('country-content');
+      const panel = document.querySelector('[data-country-filter-panel]');
+      const select = document.getElementById('conflict-select');
+
+      if (!country) {
+        container.innerHTML = '<p>Country not found.</p>';
+        throw new Error(`Country not found for code: ${code}`);
+      }
+
+      const countryName = country.name; // derive from JSON
+      const base = `/assets/images/conflict_by_country/by_conflict_detail/${countryName}`;
+      panel.dataset.base = base;
+
+      console.log('code:', code, 'countryName:', countryName, 'base:', base);
+
+      // --- Update static images ---
+      document.title = country.name;
+      container.innerHTML = `<h1>${country.name}</h1>`;
+      document.querySelector('img[alt="Flag"]').src = country.flag;
+      document.querySelector('img[alt="Map"]').src =
+        `/assets/images/conflict_by_country/by_conflict_map/${country.name}.png`;
+      document.querySelector('img[alt="Main"]').src =
+        `/assets/images/conflict_by_country/by_conflict/${country.name}.png`;
+
+      fetch('/assets/data/country_descriptions.json')
+        .then(res => res.json())
+        .then(descriptions => {
+          const data = descriptions[countryName];
+          const summaryBlock = document.getElementById('country-summary');
+          const listBlock = document.getElementById('country-info');
+
+          if (!data) {
+            if (summaryBlock) summaryBlock.textContent = `No data available for ${countryName}.`;
+            return;
+          }
+
+          // Fill the summary
+          if (summaryBlock) summaryBlock.textContent = data.summary || '';
+
+          // Build the list of key–value pairs (excluding "summary")
+          if (listBlock) {
+            listBlock.innerHTML = Object.entries(data)
+              .filter(([key]) => key !== 'summary')
+              .map(([key, value]) => `
+                <tr><td>${key.charAt(0).toUpperCase() + key.slice(1)}</td><td>${value}</td></tr>
+              `)
+              .join('');
+          }
+        })
+        .catch(err => console.error('Description data not found:', err));
+
+      // --- Populate dropdown dynamically ---
+      fetch('/assets/data/conflict_details.json')
+        .then(res => res.json())
+        .then(allData => {
+          const files = allData[country.name] || [];
+          if (!files.length) {
+            console.warn(`No conflict detail images found for ${country.name}`);
+          }
+
+          select.innerHTML = files
+            .map(f => `<option value="${encodeURIComponent(f)}">${f.replace(/\.[^/.]+$/, '')}</option>`)
+            .join('');
+
+          // countryFilter.init() runs automatically via site.js
+        })
+        .catch(err => console.error('Conflict details not found:', err));
+    })
+    .catch(err => console.error('Error loading country data:', err));
+</script>
+
+
+
+

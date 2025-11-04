@@ -1,0 +1,77 @@
+---
+layout: page
+title: Compare years
+permalink: /conflict-fatalities-compare/
+bar: vert
+nav_order: 1
+category: yearly breakdown 1989-2023
+order: 5
+
+# Left stacked images (top + total)
+left_stack:
+  - type: img
+    src: /assets/images/placeholder.png    # initial, will be swapped by JS
+    alt: "Left top"
+    attrs: 'data-role="left-top"'
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Left total"
+    attrs: 'data-role="left-total" data-behavior="enlarge"'
+
+# Right stacked images (top + total)
+right_stack:
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Right top"
+    attrs: 'data-role="right-top"'
+  - type: img
+    src: /assets/images/placeholder.png
+    alt: "Right total"
+    attrs: 'data-role="right-total" data-behavior="enlarge"'
+---
+
+
+You can select two years to compare, showing the total fatalities for that year and first five countries with the largest amount of deaths. 
+
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+
+
+<section class="compare"
+         data-compare-panel
+         data-base="/assets/images/countries_by_year/compare"
+         data-metric-map='{"Fatalities (total)":"fatalities","Number of conflicts (total)":"nr_conflicts","Fatalities (cumulative)":"fatalities_cumsum","Number of conflicts (cumulative)":"nr_conflicts_cumsum"}'>
+  <div class="controls-box">
+    <!-- Controls (rendered here so Liquid loops work) -->
+    <div class="controls controls--center">
+        <label>Metric
+        <select name="metric">
+            <option>Fatalities (total)</option>
+            <option>Number of conflicts (total)</option>
+            <option>Fatalities (cumulative)</option>
+            <option>Number of conflicts (cumulative)</option>
+        </select>
+        </label>
+    </div>
+    <div class="controls controls--row">
+        <label>Year
+        <select name="yearL">
+            {% for y in (1989..2023) %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+        </select>
+        </label>
+        <label>Year
+        <select name="yearR">
+            {% for y in (1989..2023) %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+        </select>
+        </label>
+    </div>
+  </div>
+
+  <!-- Panels from front matter -->
+  {% include panel.html layout="col-stack-left"  cells=page.left_stack %}
+  {% include panel.html layout="col-stack-right" cells=page.right_stack %}
+</section>
+
+
