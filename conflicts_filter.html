@@ -40,6 +40,16 @@ bottom_img:
 
   {% include panel.html layout="col-center" cells=page.top_img %}
   {% include panel.html layout="col-center" cells=page.bottom_img %}
+
+  {% comment %} Debug helper: show what Jekyll thinks files are {% endcomment %}
+  <ul>
+  {% for f in site.static_files %}
+    {% if f.path contains 'conflicts/fatalities_by_conflict' %}
+      <li>{{ f.path }}</li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+  
 </section>
 
 
