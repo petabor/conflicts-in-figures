@@ -28,7 +28,6 @@ panel1:
         </div>
       </div>
 
-# Panel 2 (text left, bar image right)
 panel2:
   - type: text
     html: |
@@ -40,15 +39,6 @@ panel2:
     src: /assets/images/countries_by_year/bar/deaths_total/1989.png
     alt: "Top 20 countries with highest death toll in respective year highlighting amount of civilian deaths in blue"
     attrs: 'data-role="bar-image" data-behavior="enlarge"'
-
-# # Panel 2 (text left, bar image right)
-# panel3:
-#   - type: text
-#     html: |
-#       <div class="context-text">
-#         <h2>Context</h2>
-#         <p data-role="context"></p>
-#       </div>
 ---
 
 
@@ -240,7 +230,6 @@ Use the slider to see the changes with respect to <strong>geographical</strong> 
   <!-- Panel 2: text left, image right -->
   {% include panel.html layout="row-txt-by-img" cells=page.panel2 %}
 
-  {% include panel.html layout="col-txt-center" cells=page.panel3 %}
 </section>
 
 
