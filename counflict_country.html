@@ -19,7 +19,7 @@ fetch('/conflicts-in-figures/assets/data/countries.json')
     const grid = document.getElementById('flags-grid');
     grid.innerHTML = countries.map(c => `
       <a href="/conflicts-in-figures/country.html?code=${c.code}" class="flag-card">
-        <img src="/conflicts-in-figures${c.flag}" alt="${c.name} flag">
+        <img src="${c.flag}" alt="${c.name} flag">
         <p>${c.name}</p>
       </a>
     `).join('');
