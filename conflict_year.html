@@ -1,7 +1,4 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: page
 title: Conflict fatalities by year and country
 permalink: /conflict-fatalities-by-year-country/
@@ -55,15 +52,11 @@ panel2:
 ---
 
 
-<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
-<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
 
 Use the slider to see the changes with respect to <strong>geographical</strong> location across years <strong>1989 to 2023</strong>. The graph below represents top 20 countries with highest death toll, highlighting amount of <strong>civilian deaths</strong> from the total (including army and undefined deaths). 
 
-<!-- {% include panel.html layout="col-side-by-side" cells=page.cells %}
 
-
-<!-- Hidden dictionaries (unchanged) -->
 <div id="descriptions" hidden>
   <div data-year="1989">
   <p><strong>Armed conflicts and related deaths in 1989 were heavily concentrated in Africa with highest death toll in <strong><a href="https://www.cia.gov/the-world-factbook/countries/ethiopia/" target="_blank" rel="noopener">Ethiopia</a></strong> (~25,000), largely due to civil war, famine, and conflict with separatist groups.</strong>
@@ -233,15 +226,7 @@ Use the slider to see the changes with respect to <strong>geographical</strong> 
 
 </div>
 
-<!-- <div id="contexts" hidden>
-  <div data-year="1989">
-  <p>
-    The civil war between the <strong><a href="https://en.wikipedia.org/wiki/Derg" target="_blank" rel="noopener">Derg</a></strong> regime and rebel groups (such as the Tigray People’s Liberation Front and Eritrean People’s Liberation Front) reached catastrophic levels. Famine conditions exacerbated the toll. Derg regime was apart from other brutalities responsible for the death of Haile Selassie.
-    </p> </div>
-  <div data-year="1990">…</div>
-</div> -->
 
-<!-- YEAR PANEL WRAPPER: scope for the controller -->
 <section class="main-content"
          data-year-panel
          data-desc-src="#descriptions"
@@ -260,148 +245,20 @@ Use the slider to see the changes with respect to <strong>geographical</strong> 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div id="descriptions" style="display:none">
-  <div data-year="1989">
-    <p>Armed conflicts and related deaths in 1989 were heavily concentrated in Africa with highest death toll in <strong><a href="https://www.cia.gov/the-world-factbook/countries/ethiopia/" target="_blank" rel="noopener">Ethiopia</a></strong> (~25,000), largely due to civil war, famine, and conflict with separatist groups. </p> 
-  </div>
-  <div data-year="1990">
-    Situation escalated in several regions.
-    Conflicts spread to neighboring countries.
-  </div>
-</div>
-
-<div id="contexts" style="display:none">
-  <div data-year="1989">
-    <p>
-    The civil war between the <strong><a href="https://en.wikipedia.org/wiki/Derg" target="_blank" rel="noopener">Derg</a></strong> regime and rebel groups (such as the Tigray People’s Liberation Front and Eritrean People’s Liberation Front) reached catastrophic levels. Famine conditions exacerbated the toll. Derg regime was apart from other brutalities responsible for the death of Haile Selassie.
-    </p> 
-  </div>
-  <div data-year="1990">
-    <p>
-      More
-    </p> 
-  </div>
-</div>
-
-
-<div class="main-content">
-  <div class="year-slider-container">
-    <input type="range" id="year-slider" min="1989" max="2023" value="1989" step="1" list="year-ticks">
-    <datalist id="year-ticks">
-      {%- for year in (1989..2023) -%}
-        <option value="{{ year }}"></option>
-      {%- endfor -%}
-    </datalist>
-    <p id="year-label">Year: 1989</p>
-
-
-   <div class="year-images">
-    <div class="map-wrapper">
-      <img id="map-image" src="{{ '/assets/images/countries_by_year/map/deaths_total/1989.png' | relative_url }}" alt="Map">
-    </div>
-   </div>
-
-
-  <div class="bar-text-row">
-    <div class="year-text">
-      <h2 id="description-title">Summary</h2>
-      <p id="description"></p>
-    </div>
-    <div class="bar-images">
-      <img id="bar-image" src="{{ '/assets/images/countries_by_year/bar/deaths_total/1989.png' | relative_url }}" alt="Bar plot">
-    </div>
-  </div>
-
-  <div class="context-text">
-    <h2 id="context-title">Context</h2>
-    <p id="context"></p>
-  </div>
-  
-  </div>
-
-</div>
-
-
-
 <script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const slider = document.getElementById('year-slider');
-  const mapImage = document.getElementById('map-image');
-  const barImage = document.getElementById('bar-image');
-  const yearLabel = document.getElementById('year-label');
-  const description = document.getElementById('description');
-  const context = document.getElementById('context');
-
-  // const descriptionsDiv = document.getElementById('year-descriptions');
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
 
 
-  // Automatically collect descriptions from hidden HTML
-  const descriptions = {};
-  document.querySelectorAll('#descriptions > div').forEach(div => {
-    descriptions[div.dataset.year] = div.innerHTML;
-  });
 
-  // Automatically collect context from hidden HTML
-  const contexts = {};
-  document.querySelectorAll('#contexts > div').forEach(div => {
-    contexts[div.dataset.year] = div.innerHTML;
-  });
-  
 
-  const baseUrl = "/assets/images/countries_by_year/";
 
-  function updateYear(year) {
-    yearLabel.textContent = `Year: ${year}`;
-    mapImage.src = `${baseUrl}map/deaths_total/${year}.png`;
-    barImage.src = `${baseUrl}bar/deaths_total/${year}.png`;
-    description.innerHTML  = descriptions[year] || "No description available.";
-    context.innerHTML  = contexts[year] || "No description available.";
-    panzoomMap.reset();
-  }
 
-  // Initialize Panzoom
-  const panzoomMap = Panzoom(mapImage, {
-    maxScale: 10,
-    minScale: 1,
-    // bounds: true,
-    contain: 'outside',
-    cursor: 'grab'
-  });
 
-  slider.addEventListener('input', () => updateYear(slider.value));
-  updateYear(slider.value);
 
-  // Zoom with mouse wheel
-  mapImage.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    panzoomMap.zoomWithWheel(e);
-  });
 
-  // Change cursor when dragging
-  mapImage.addEventListener('mousedown', () => mapImage.style.cursor = 'grabbing');
-  mapImage.addEventListener('mouseup', () => mapImage.style.cursor = 'grab');
-});
-</script> -->
+
+
+
 
 
 

@@ -8,3 +8,6 @@
 8. linking local github with the new repo: copy link to github repo
     git remote add origin http.. 
 9. git push origin gh-pages
+
+
+conflicts-in-figures

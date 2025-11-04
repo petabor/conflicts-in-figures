@@ -21,10 +21,6 @@ bottom_img:
 ---
 
 
-<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
-<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
-
-
 <section class="filter"
          data-filter-panel
          data-base="/assets/images/conflicts/">
@@ -44,3 +40,7 @@ bottom_img:
   {% include panel.html layout="col-center" cells=page.top_img %}
   {% include panel.html layout="col-center" cells=page.bottom_img %}
 </section>
+
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>

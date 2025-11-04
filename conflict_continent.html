@@ -30,9 +30,6 @@ panel1:
       </div>
 ---
 
-<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
-<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
-
 <section class="main-content"
          data-year-panel
          data-map-template="/assets/images/conflict_by_continent/map/{year}.png">
@@ -40,3 +37,7 @@ panel1:
   {% include panel.html layout="col-center" cells=page.panel1 %}
 
 </section>
+
+
+<script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
