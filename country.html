@@ -41,10 +41,6 @@ dropdown_img:
     attrs: 'data-behavior="enlarge"'
 ---
 
-  <!-- flag_img: -->
-     <!-- txt_object: -->
-
-
 
 <div id="country-content">
   <h1>Loading...</h1>
@@ -54,11 +50,6 @@ dropdown_img:
          id="country-filter"
          data-country-filter-panel
          data-base="">
-
-  <!-- <div class="flag-text-row"> -->
-    <!-- {% include panel.html layout="row-txt-by-img" cells=page.panel1 %} -->
-    <!-- {% include panel.html layout="row-img-by-txt" cells=page.txt_object %} -->
-  <!-- </div> -->
 
   {% include panel.html layout="col-left" cells=page.flag_img %}
   {% include panel.html layout="col-left" cells=page.txt_object %}
@@ -86,7 +77,7 @@ dropdown_img:
 
   const code = getQueryParam('code');
 
-  fetch('/assets/data/countries.json')
+  fetch('/conflicts-in-figures/assets/data/countries.json')
     .then(res => res.json())
     .then(countries => {
       const country = countries.find(c => c.code === code);
