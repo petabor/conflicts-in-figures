@@ -33,7 +33,14 @@ top_img:
   <div class="filter-controls-box">
     <label>Select continent
       <select id="conflict-select">
-        {% assign files = site.static_files | where_exp: "f", "f.path contains '/conflicts-in-figures/assets/images/conflict_by_continent/forecast'" %}
+        <ul>
+        {% for f in site.static_files %}
+          {% if f.path contains 'conflict_by_continent/forecast' %}
+            <li>{{ f.path }}</li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+        {% assign files = site.static_files | where_exp: "f", "f.path contains '/assets/images/conflict_by_continent/forecast'" %}
         {% for f in files %}
           {% assign name_no_ext = f.name | split: '.' | first %}
           <option value="{{ f.name }}">{{ name_no_ext }}</option>
@@ -41,6 +48,7 @@ top_img:
       </select>
     </label>
   </div>
+
 
   {% include panel.html layout="col-center" cells=page.top_img %}
   
