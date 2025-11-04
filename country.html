@@ -100,7 +100,7 @@ dropdown_img:
       }
 
       const countryName = country.name; // derive from JSON
-      const base = `/assets/images/conflict_by_country/by_conflict_detail/${countryName}`;
+      const base = `/conflicts-in-figures/assets/images/conflict_by_country/by_conflict_detail/${countryName}`;
       panel.dataset.base = base;
 
       console.log('code:', code, 'countryName:', countryName, 'base:', base);
@@ -110,11 +110,11 @@ dropdown_img:
       container.innerHTML = `<h1>${country.name}</h1>`;
       document.querySelector('img[alt="Flag"]').src = country.flag;
       document.querySelector('img[alt="Map"]').src =
-        `/assets/images/conflict_by_country/by_conflict_map/${country.name}.png`;
+        `/conflicts-in-figures/assets/images/conflict_by_country/by_conflict_map/${country.name}.png`;
       document.querySelector('img[alt="Main"]').src =
-        `/assets/images/conflict_by_country/by_conflict/${country.name}.png`;
+        `/conflicts-in-figures/assets/images/conflict_by_country/by_conflict/${country.name}.png`;
 
-      fetch('/assets/data/country_descriptions.json')
+      fetch('/conflicts-in-figures/assets/data/country_descriptions.json')
         .then(res => res.json())
         .then(descriptions => {
           const data = descriptions[countryName];
@@ -142,7 +142,7 @@ dropdown_img:
         .catch(err => console.error('Description data not found:', err));
 
       // --- Populate dropdown dynamically ---
-      fetch('/assets/data/conflict_details.json')
+      fetch('/conflicts-in-figures/assets/data/conflict_details.json')
         .then(res => res.json())
         .then(allData => {
           const files = allData[country.name] || [];
