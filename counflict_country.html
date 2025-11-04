@@ -12,7 +12,7 @@ order: 1
 <div id="flags-grid" class="flags-grid"></div>
 
 <script>
-fetch('/assets/data/countries.json')
+fetch('/conflicts-in-figures/assets/data/countries.json')
   .then(res => res.json())
   .then(countries => {
     const grid = document.getElementById('flags-grid');
