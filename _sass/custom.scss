@@ -534,7 +534,7 @@ main{
 }
 
 .panel--row-txt-by-img { /* row-txt-by-img (text left, image right) */
-  display: grid; gap: 4rem; grid-template-columns: 0.5fr 2fr; align-items: center;
+  display: grid; gap: 4rem; grid-template-columns: 1fr 2fr; align-items: center;
 }
 
 .panel--col-img-by-img-txt { /* col-img-by-img-txt (image row, then image+text row) */
