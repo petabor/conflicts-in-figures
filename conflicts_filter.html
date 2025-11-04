@@ -9,7 +9,7 @@ order: 2
 
 top_img:
   - type: img
-    src: /assets/images/placeholder.png    # initial, will be swapped by JS
+    src: /assets/images/placeholder.png
     alt: "Top"
     attrs: 'data-behavior="enlarge" data-id="special"'
 bottom_img:
@@ -29,7 +29,7 @@ bottom_img:
   <div class="filter-controls-box">
     <label>Select conflict
       <select name="conflict" id="conflict-select">
-        {% assign files = site.static_files | where_exp: "f", "f.path contains '/conflicts-in-figures/assets/images/conflicts/fatalities_by_conflict'" %}
+        {% assign files = site.static_files | where_exp: "f", "f.path contains '/assets/images/conflicts/fatalities_by_conflict'" %}
         {% for f in files %}
           {% assign name_no_ext = f.name | split: '.' | first %}
           <option value="{{ f.name }}">{{ name_no_ext }}</option>
