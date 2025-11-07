@@ -801,34 +801,26 @@ img[data-id="special"] {
 }
 
 
-.menu-toggle-label,
-.menu-toggle-checkbox {
-  display: none !important;
-}
-
-
-/* Hide the checkbox visually but keep it accessible */
-.menu-toggle-checkbox {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* The hamburger label (☰) */
-.menu-toggle-label {
-  display: none;
-  font-size: 2rem;
-  cursor: pointer;
-  margin-left: auto;
-  padding: 0.5rem 1rem;
-  user-select: none;
-}
 
 
 
 /* =========================
-   MOBILE RESPONSIVE + TOGGLE SIDEBAR
+   MOBILE RESPONSIVE + JS TOGGLE SIDEBAR
    ========================= */
+
+/* ---------- DESKTOP SAFETY RULES ---------- */
+@media (min-width: 801px) {
+  /* Hide menu button and keep top nav visible */
+  .menu-btn {
+    display: none !important;
+  }
+
+  .nav-horz {
+    display: flex !important;
+  }
+}
+
+/* ---------- MOBILE LAYOUT ---------- */
 @media (max-width: 800px) {
 
   /* Reset desktop sidebar and layout */
@@ -839,27 +831,25 @@ img[data-id="special"] {
     padding-top: calc(var(--header-h) + 10px);
   }
 
-  /* ---------- HEADER TOGGLE ICON ---------- */
-  /* Hide on desktop; show only here */
-  .menu-toggle-label {
-    display: block !important;
+  /* ---------- HEADER / MENU BUTTON ---------- */
+  .menu-btn {
+    display: block;
     font-size: clamp(1.6rem, 6vw, 2.4rem);
+    background: none;
+    border: none;
     cursor: pointer;
     margin-left: auto;
     padding: 0.5rem 1rem;
-    user-select: none;
     line-height: 1;
+    user-select: none;
   }
 
-  /* Hide the checkbox itself (kept accessible) */
-  .menu-toggle-checkbox {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-    display: block !important;
+  .menu-btn:focus {
+    outline: 2px solid #333;
+    outline-offset: 4px;
   }
 
-  /* Adjust header layout for smaller screens */
+  /* Adjust header layout */
   .horz-header {
     justify-content: space-between;
     align-items: center;
@@ -889,27 +879,26 @@ img[data-id="special"] {
     padding-top: 1rem;
   }
 
-  /* Reveal sidebar when toggle is checked */
-  #menu-toggle:checked ~ .site-nav {
+  /* When sidebar is toggled open (via JS) */
+  .site-nav.open {
     transform: translateX(0);
   }
 
-  /* Optional: dim background when sidebar open */
-  #menu-toggle:checked ~ main::before {
+  /* Dimmed background when menu is open */
+  body.menu-open::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 998;
   }
 
-  /* Prevent main scroll when sidebar open */
-  #menu-toggle:checked ~ main {
+  /* Prevent main scroll when menu is open */
+  body.menu-open {
     overflow: hidden;
   }
 
   /* ---------- HORIZONTAL NAV ---------- */
-  /* Hide top nav on mobile (sidebar replaces it) */
   .nav-horz {
     display: none !important;
   }
@@ -935,26 +924,13 @@ img[data-id="special"] {
     height: auto;
   }
 
-  .controls--center, 
+  .controls--center,
   .controls--row {
     padding: 1rem;
     grid-template-columns: 1fr;
   }
 
   .page-content { font-size: 14px; }
-}
-
-/* ---------- DESKTOP SAFETY RULES ---------- */
-/* Ensure toggle never appears on large screens */
-@media (min-width: 801px) {
-  .menu-toggle-label,
-  .menu-toggle-checkbox {
-    display: none !important;
-  }
-
-  .nav-horz {
-    display: flex !important;
-  }
 }
 
 

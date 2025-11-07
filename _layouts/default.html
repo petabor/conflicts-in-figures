@@ -8,6 +8,32 @@
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   </head>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.querySelector(".menu-btn");
+    const sidebar = document.getElementById("sidebar");
+
+    menuBtn?.addEventListener("click", () => {
+      const isOpen = sidebar.classList.toggle("open");
+      document.body.classList.toggle("menu-open", isOpen);
+      menuBtn.setAttribute("aria-expanded", isOpen);
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      if (sidebar.classList.contains("open") &&
+          !sidebar.contains(e.target) &&
+          !menuBtn.contains(e.target)) {
+        sidebar.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      }
+    });
+  });
+  </script>
+  
   <body>
 
     {%- include header.html -%}
