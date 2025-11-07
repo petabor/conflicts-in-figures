@@ -118,7 +118,7 @@ main{
   overflow: auto;
   box-sizing: border-box;
   font-size: 13px;
-  font-family: 'Roboto';
+  // font-family: 'Roboto';
 }
 
 .nav-list-vert {
@@ -141,6 +141,14 @@ main{
 .nav-list-vert li {
   list-style: none;
   margin: 0;
+}
+
+
+.site-nav,
+.nav-list-vert,
+.nav-list-vert a,
+.category-label {
+  font-family: 'Roboto', sans-serif;
 }
 
 .category-toggle{ /* Hide the raw checkbox but keep it accessible */
