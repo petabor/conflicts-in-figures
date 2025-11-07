@@ -1,6 +1,74 @@
 <header class="site-header">
   <div class="horz-header">
 
+    <!-- Logo -->
+    <a class="site-logo" href="{{ "/" | relative_url }}">
+      <img src="{{ "/assets/images/logo_02.svg" | relative_url }}" alt="{{ site.title }}">
+    </a>
+
+    <!-- Site title -->
+    <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+
+    <!-- 🌐 Hamburger toggle for mobile -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox" />
+    <label for="menu-toggle" class="menu-toggle-label" aria-label="Toggle menu">☰</label>
+
+    <!-- Horizontal nav (top bar links) -->
+    <ul class="nav-horz">
+      {% assign nav_horz_pages = site.pages | sort: "nav_order" %}
+      {% for page in nav_horz_pages %}
+        {% if page.bar == "horz" %}
+          <li><a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+  </div>
+</header>
+
+<!-- Sidebar (vertical nav) -->
+<nav class="site-nav">
+  <div class="trigger">
+    {%- assign vert_pages = site.pages | where: "bar", "vert" | reject: "exclude_from_nav", true | where_exp: "p", "p.url != '/country.html'" | sort: "nav_order" -%}
+    {%- assign categories = vert_pages | map: "category" | uniq -%}
+    <ul class="nav-list-vert">
+      {% for cat in categories %}
+        {%- assign cat_id = cat | slugify -%}
+        {%- assign is_open = false -%}
+        {%- if page.category == cat -%}{%- assign is_open = true -%}{%- endif -%}
+
+        <li class="category">
+          <input
+            type="checkbox"
+            id="cat-{{ cat_id }}"
+            class="category-toggle"
+            {% if is_open %}checked{% endif %}
+          />
+          <label for="cat-{{ cat_id }}" class="category-label">{{ cat | capitalize }}</label>
+
+          <ul class="subpages">
+            {%- assign cat_pages = vert_pages | where: "category", cat | sort: "order" -%}
+            {% for p in cat_pages %}
+              <li>
+                <a class="nav-link {% if p.url == page.url %}is-active{% endif %}"
+                   href="{{ p.url | relative_url }}">
+                  {{ p.title | escape }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<!-- <header class="site-header">
+  <div class="horz-header">
+
     <a class="site-logo" href="{{ "/" | relative_url }}">
       <img src="{{ "/assets/images/logo_02.svg" | relative_url }}" alt="{{ site.title }}">
     </a>
@@ -20,8 +88,6 @@
 
 <nav class="site-nav">
   <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-  <!-- <label for="nav-trigger">Menu</label> -->
-
   <div class="trigger">
     {%- assign vert_pages = site.pages | where: "bar", "vert" | reject: "exclude_from_nav", true | where_exp: "p", "p.url != '/country.html'" | sort: "nav_order" -%}
     {%- assign categories = vert_pages | map: "category" | uniq -%}
@@ -55,7 +121,7 @@
       {% endfor %}
     </ul>
   </div>
-</nav>
+</nav> -->
 
 
 <!-- reject: "exclude_from_nav", true -->
