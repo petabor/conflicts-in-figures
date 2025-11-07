@@ -69,16 +69,6 @@ main{
 
 }
 
-// .nav-horz{
-//   display: flex;
-//   list-style: none;
-//   gap: 5em;
-//   margin: 0;                                   /* reset default ul margin */
-//   padding: 0;
-//   // align-items: flex-end;
-//   // align-items: flex-end;
-// }
-
 .nav-horz {
   margin-left: auto;            /* << pushes the nav to the end */
   display: flex;
@@ -811,7 +801,10 @@ img[data-id="special"] {
 }
 
 
-
+.menu-toggle-label,
+.menu-toggle-checkbox {
+  display: none !important;
+}
 
 
 /* Hide the checkbox visually but keep it accessible */
@@ -838,7 +831,7 @@ img[data-id="special"] {
    ========================= */
 @media (max-width: 800px) {
 
-  /* Variables and layout reset */
+  /* Reset desktop sidebar and layout */
   :root { --sidebar-w: 0; }
 
   main {
@@ -846,26 +839,41 @@ img[data-id="special"] {
     padding-top: calc(var(--header-h) + 10px);
   }
 
-  /* Show the ☰ toggle icon in header */
+  /* ---------- HEADER TOGGLE ICON ---------- */
+  /* Hide on desktop; show only here */
   .menu-toggle-label {
-    display: block;
-    font-size: 2rem;
+    display: block !important;
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
     cursor: pointer;
     margin-left: auto;
     padding: 0.5rem 1rem;
     user-select: none;
+    line-height: 1;
   }
 
-  /* Hide the checkbox itself */
+  /* Hide the checkbox itself (kept accessible) */
   .menu-toggle-checkbox {
     position: absolute;
     opacity: 0;
     pointer-events: none;
+    display: block !important;
   }
 
+  /* Adjust header layout for smaller screens */
+  .horz-header {
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-right: 0.5rem;
+  }
 
+  .site-title {
+    font-size: 1.1rem;
+    flex: 1;
+    text-align: left;
+  }
 
-  /* Sidebar: hidden by default (slides in) */
+  /* ---------- SIDEBAR BEHAVIOR ---------- */
   .site-nav {
     position: fixed;
     top: var(--header-h);
@@ -881,17 +889,12 @@ img[data-id="special"] {
     padding-top: 1rem;
   }
 
-  /* When menu checkbox is checked, reveal sidebar */
+  /* Reveal sidebar when toggle is checked */
   #menu-toggle:checked ~ .site-nav {
     transform: translateX(0);
   }
 
-  /* Optional: prevent body scroll when sidebar open */
-  #menu-toggle:checked ~ main {
-    overflow: hidden;
-  }
-
-  /* Optional: dim background when sidebar is open */
+  /* Optional: dim background when sidebar open */
   #menu-toggle:checked ~ main::before {
     content: "";
     position: fixed;
@@ -900,15 +903,18 @@ img[data-id="special"] {
     z-index: 998;
   }
 
-  /* Top nav cleanup */
-  .nav-horz {
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    display: none; /* hide top nav on small screens if sidebar handles it */
+  /* Prevent main scroll when sidebar open */
+  #menu-toggle:checked ~ main {
+    overflow: hidden;
   }
 
-  /* Keep your existing layout refinements */
+  /* ---------- HORIZONTAL NAV ---------- */
+  /* Hide top nav on mobile (sidebar replaces it) */
+  .nav-horz {
+    display: none !important;
+  }
+
+  /* ---------- PAGE LAYOUT FIXES ---------- */
   .page-content .wrapper,
   .site-footer .wrapper {
     padding: 1rem;
@@ -937,6 +943,20 @@ img[data-id="special"] {
 
   .page-content { font-size: 14px; }
 }
+
+/* ---------- DESKTOP SAFETY RULES ---------- */
+/* Ensure toggle never appears on large screens */
+@media (min-width: 801px) {
+  .menu-toggle-label,
+  .menu-toggle-checkbox {
+    display: none !important;
+  }
+
+  .nav-horz {
+    display: flex !important;
+  }
+}
+
 
 
 
