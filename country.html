@@ -25,7 +25,7 @@ txt_object:
 map_img:
   - type: img
     src: /assets/images/placeholder.png
-    alt: "Map"
+    alt: "Country location"
     attrs: 'data-behavior="zoom"'
 
 main_img:
@@ -37,7 +37,7 @@ main_img:
 dropdown_img:
   - type: img
     src: /assets/images/placeholder.png
-    alt: "Top"
+    alt: "All causalities in a given conflict"
     attrs: 'data-behavior="enlarge"'
 ---
 
@@ -58,6 +58,11 @@ dropdown_img:
     {% include panel.html layout="col-center" cells=page.map_img %}
   </div>
 
+  <p>
+    This timeline graph shows <strong>the number of fatalities</strong> per year and the cumulative death toll, 
+    with different colors representing various actors or factions involved in the fighting.
+  </p>
+
   {% include panel.html layout="col-center" cells=page.main_img %} 
 
   <div class="filter-controls-box">
@@ -65,6 +70,12 @@ dropdown_img:
       <select id="conflict-select"></select>
     </label>
   </div>
+
+  <p>
+    This figure shows how the conflict evolved over time and the number of casualties associated with each party involved. 
+    The pie chart summarizes the proportion of fatalities attributed to civilians, government forces, 
+    and other groups, while the map displays the geographical locations of individual conflict events.
+  </p>
 
   {% include panel.html layout="col-center" cells=page.dropdown_img %}
 
