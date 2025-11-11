@@ -19,9 +19,28 @@ bottom_img:
     attrs: 'data-behavior="zoom"'
 ---
 
+<p>
+The first figure highlights <strong>the largest and deadliest conflicts</strong> recorded between 1989 and 2023, categorized by conflict type:
+
+<ul>
+  <li><strong>State-based conflicts (black)</strong> involve governments and organized armed groups.</li>
+  <li><strong>Non-state conflicts (orange)</strong> occur between non-governmental groups.</li>
+  <li><strong>One-sided violence (red)</strong> represents deliberate attacks on civilians.</li>
+</ul>
+
+</p>
 
 {% include panel.html layout="col-center" cells=page.top_img %}
+
+
+<p>
+  The <strong>word cloud</strong> on the right is generated from <strong>news articles</strong> associated with each conflict event, 
+  capturing the most common terms used in reporting. 
+  Words like <i>“killed,” “attack,” “forces,” “clashes,” and “militants”</i> dominate
+</p>
+
 {% include panel.html layout="col-center" cells=page.bottom_img %}
+
 
 
 <script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
