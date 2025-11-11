@@ -23,6 +23,12 @@ top_img:
 <script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
 <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
 
+<p>
+  This figure illustrates <strong>the cumulative number of fatalities</strong> 
+  across continents from 1989 to 2023, highlighting long-term regional differences in conflict severity, summarized with 
+  <strong>Compound Annual Growth Rates (CAGR)</strong> indicating the rate of change in fatalities over time.
+</p>
+
 <section class="filter"
          id="country-filter"
          data-country-filter-panel
@@ -33,13 +39,6 @@ top_img:
   <div class="filter-controls-box">
     <label>Select continent
       <select id="conflict-select">
-        <!-- <ul>
-        {% for f in site.static_files %}
-          {% if f.path contains 'conflict_by_continent/forecast' %}
-            <li>{{ f.path }}</li>
-          {% endif %}
-        {% endfor %}
-        </ul> -->
         {% assign files = site.static_files | where_exp: "f", "f.path contains '/assets/images/conflict_by_continent/forecast'" %}
         {% for f in files %}
           {% assign name_no_ext = f.name | split: '.' | first %}
@@ -49,6 +48,11 @@ top_img:
     </label>
   </div>
 
+  <p>
+    This figure illustrates presents a forecast of yearly fatalities 
+    across continents, comparing observed data with a fitted trend and future projections. 
+    Use the filter to display different continents.
+  </p>
 
   {% include panel.html layout="col-center" cells=page.top_img %}
   
