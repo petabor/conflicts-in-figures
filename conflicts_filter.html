@@ -22,6 +22,11 @@ bottom_img:
 <script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js" defer></script>
 <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
 
+<p>
+  This section allows users to explore <strong>the 150 most devastating conflicts</strong> recorded between 1989 and 2023.
+  <i>Each conflict can be selected through a filter, displaying two complementary figures below.</i>
+</p>
+
 <section class="filter"
          data-filter-panel
          data-base="/conflicts-in-figures/assets/images/conflicts/">
@@ -38,10 +43,29 @@ bottom_img:
     </label>
   </div>
 
+  <p>
+    The first figure provides an overview of the conflict, showing the two main opposing sides 
+    (A and B, where A is always the aggressor in one-sided type of conflict), 
+    the distribution of fatalities, and the share of civilian deaths. 
+    The accompanying pie chart summarizes the proportions of deaths attributed to each side and to civilians.
+    <i>If side B represents civilians, it is displayed only in the pie chart and not as a bar.</i>
+  </p>
+
   {% include panel.html layout="col-center" cells=page.top_img %}
+
+  <p>
+    The second figure presents a random sample of news headlines related to the selected conflict, 
+    drawn from articles associated with the underlying dataset.  
+  </p>
+
+  <p>
+    <i>If no headlines are shown, it does not necessarily mean that no reports exist; 
+    some may have been excluded during data cleaning. Every fatality record in the dataset is linked to a specific report.</i>
+  </p>
+
   {% include panel.html layout="col-center" cells=page.bottom_img %}
 
-  {% comment %} Debug helper: show what Jekyll thinks files are {% endcomment %}
+
   <!-- <ul>
   {% for f in site.static_files %}
     {% if f.path contains 'conflicts/fatalities_by_conflict' %}
