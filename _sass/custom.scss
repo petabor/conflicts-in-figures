@@ -55,7 +55,7 @@ main{
   border-bottom: 3px solid #e8e8e8;
   justify-content: flex-start;
   align-items: center; 
-  background-color: #7e7e7e;
+  
 }
 
 .horz-header {
@@ -66,6 +66,7 @@ main{
   // margin-left: calc(var(--sidebar-w) + 50px);
   align-items: center;
   gap: 25px;
+  background-color: #7e7e7e;
   // margin: 0 auto;
 
 }
@@ -78,7 +79,7 @@ main{
   list-style: none;
   margin-block: 0;
   padding: 0;
-  background-color: #0f0202;
+  // background-color: #0f0202;
 }
 
 .nav-horz li {
@@ -110,6 +111,7 @@ main{
   overflow: auto;
   box-sizing: border-box;
   font-size: 13px;
+  background-color: #000000;
   // font-family: 'Roboto';
 }
 
@@ -805,24 +807,6 @@ img[data-id="special"] {
 
 
 
-
-/* =========================
-   MOBILE RESPONSIVE + JS TOGGLE SIDEBAR
-   ========================= */
-
-/* ---------- DESKTOP SAFETY RULES ---------- */
-@media (min-width: 801px) {
-  /* Hide menu button and keep top nav visible */
-  .menu-btn {
-    display: none !important;
-  }
-
-  .nav-horz {
-    display: flex !important;
-  }
-}
-
-/* ---------- MOBILE LAYOUT ---------- */
 @media (max-width: 800px) {
 
   /* Reset desktop sidebar and layout */
@@ -833,7 +817,22 @@ img[data-id="special"] {
     padding-top: calc(var(--header-h) + 10px);
   }
 
-  /* ---------- HEADER / MENU BUTTON ---------- */
+  /* ---------- HEADER ---------- */
+  .horz-header {
+    flex-wrap: wrap;              /* allow logo/title/toggle to break lines */
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .site-title {
+    font-size: 1.1rem;
+    flex: 1 1 100%;
+    text-align: left;
+  }
+
+  /* Hamburger button */
   .menu-btn {
     display: block;
     font-size: clamp(1.6rem, 6vw, 2.4rem);
@@ -841,37 +840,40 @@ img[data-id="special"] {
     border: none;
     cursor: pointer;
     margin-left: auto;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.75rem;
     line-height: 1;
-    user-select: none;
   }
 
-  .menu-btn:focus {
-    outline: 2px solid #333;
-    outline-offset: 4px;
-  }
-
-  /* Adjust header layout */
-  .horz-header {
-    justify-content: space-between;
-    align-items: center;
+  /* When header expands (for nav below title) */
+  .nav-horz {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 1rem;
-    padding-right: 0.5rem;
+    margin: 0.25rem 0 0.5rem 0;
+    padding-left: 1rem;
+    border-top: 1px solid #eaeaea;
   }
 
-  .site-title {
-    font-size: 1.1rem;
-    flex: 1;
-    text-align: left;
+  .nav-horz li a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
   }
 
-  /* ---------- SIDEBAR BEHAVIOR ---------- */
+  .nav-horz li a:hover {
+    color: #666;
+  }
+
+  /* ---------- SIDEBAR ---------- */
   .site-nav {
     position: fixed;
-    top: var(--header-h);
+    top: calc(var(--header-h) + 3rem); /* push below header & nav */
     left: 0;
     width: 80vw;
-    height: calc(100% - var(--header-h));
+    height: calc(100% - var(--header-h) - 3rem);
     background: #f1f1f1;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
@@ -881,12 +883,11 @@ img[data-id="special"] {
     padding-top: 1rem;
   }
 
-  /* When sidebar is toggled open (via JS) */
   .site-nav.open {
     transform: translateX(0);
   }
 
-  /* Dimmed background when menu is open */
+  /* Dimmed background when open */
   body.menu-open::before {
     content: "";
     position: fixed;
@@ -895,17 +896,11 @@ img[data-id="special"] {
     z-index: 998;
   }
 
-  /* Prevent main scroll when menu is open */
   body.menu-open {
     overflow: hidden;
   }
 
-  /* ---------- HORIZONTAL NAV ---------- */
-  .nav-horz {
-    display: none !important;
-  }
-
-  /* ---------- PAGE LAYOUT FIXES ---------- */
+  /* ---------- CONTENT ADJUSTMENTS ---------- */
   .page-content .wrapper,
   .site-footer .wrapper {
     padding: 1rem;
@@ -935,187 +930,144 @@ img[data-id="special"] {
   .page-content { font-size: 14px; }
 }
 
+/* ---------- DESKTOP SAFETY ---------- */
+@media (min-width: 801px) {
+  .menu-btn { display: none !important; }
+  .nav-horz { display: flex !important; }
+}
 
 
+// /* =========================
+//    MOBILE RESPONSIVE + JS TOGGLE SIDEBAR
+//    ========================= */
 
+// /* ---------- DESKTOP SAFETY RULES ---------- */
+// @media (min-width: 801px) {
+//   /* Hide menu button and keep top nav visible */
+//   .menu-btn {
+//     display: none !important;
+//   }
 
+//   .nav-horz {
+//     display: flex !important;
+//   }
+// }
 
-// .country-graph img {
-//   max-width: 600px;
-//   width: 100%;
-//   // border-radius: 8px;
-//   // box-shadow: 0 0 8px rgba(0,0,0,0.1);
-//   margin: 1rem 0;
+// /* ---------- MOBILE LAYOUT ---------- */
+// @media (max-width: 800px) {
+
+//   /* Reset desktop sidebar and layout */
+//   :root { --sidebar-w: 0; }
+
+//   main {
+//     margin-left: 0;
+//     padding-top: calc(var(--header-h) + 10px);
+//   }
+
+//   /* ---------- HEADER / MENU BUTTON ---------- */
+//   .menu-btn {
+//     display: block;
+//     font-size: clamp(1.6rem, 6vw, 2.4rem);
+//     background: none;
+//     border: none;
+//     cursor: pointer;
+//     margin-left: auto;
+//     padding: 0.5rem 1rem;
+//     line-height: 1;
+//     user-select: none;
+//   }
+
+//   .menu-btn:focus {
+//     outline: 2px solid #333;
+//     outline-offset: 4px;
+//   }
+
+//   /* Adjust header layout */
+//   .horz-header {
+//     justify-content: space-between;
+//     align-items: center;
+//     gap: 1rem;
+//     padding-right: 0.5rem;
+//   }
+
+//   .site-title {
+//     font-size: 1.1rem;
+//     flex: 1;
+//     text-align: left;
+//   }
+
+//   /* ---------- SIDEBAR BEHAVIOR ---------- */
+//   .site-nav {
+//     position: fixed;
+//     top: var(--header-h);
+//     left: 0;
+//     width: 80vw;
+//     height: calc(100% - var(--header-h));
+//     background: #f1f1f1;
+//     transform: translateX(-100%);
+//     transition: transform 0.3s ease;
+//     z-index: 999;
+//     overflow-y: auto;
+//     box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+//     padding-top: 1rem;
+//   }
+
+//   /* When sidebar is toggled open (via JS) */
+//   .site-nav.open {
+//     transform: translateX(0);
+//   }
+
+//   /* Dimmed background when menu is open */
+//   body.menu-open::before {
+//     content: "";
+//     position: fixed;
+//     inset: 0;
+//     background: rgba(0, 0, 0, 0.4);
+//     z-index: 998;
+//   }
+
+//   /* Prevent main scroll when menu is open */
+//   body.menu-open {
+//     overflow: hidden;
+//   }
+
+//   /* ---------- HORIZONTAL NAV ---------- */
+//   .nav-horz {
+//     display: none !important;
+//   }
+
+//   /* ---------- PAGE LAYOUT FIXES ---------- */
+//   .page-content .wrapper,
+//   .site-footer .wrapper {
+//     padding: 1rem;
+//     margin-left: 0;
+//     max-width: 100%;
+//   }
+
+//   .total-images,
+//   .max-box,
+//   .controls--row {
+//     flex-direction: column;
+//     gap: 1rem;
+//     padding: 0 1rem;
+//   }
+
+//   img {
+//     max-width: 100%;
+//     height: auto;
+//   }
+
+//   .controls--center,
+//   .controls--row {
+//     padding: 1rem;
+//     grid-template-columns: 1fr;
+//   }
+
+//   .page-content { font-size: 14px; }
 // }
 
 
-// .flag-map-row {
-//   display: grid; 
-//   // gap: 1rem; 
-//   grid-template-columns: 0.5fr 1fr;
-//   align-items: center;
-//   // display: flex;
-//   // justify-content: space-between;
-//   // align-items: center;
-//   // margin: 1.5rem 0;
-// }
-// .flag-map-row img {
-//   width: 100%;
-//   border-radius: 8px;
-//   // box-shadow: 0 0 5px rgba(0,0,0,0.15);
-// }
-
-// .flag-map-row #flag_img {
-//   width: 500px;
-//   border-radius: 8px;
-//   // box-shadow: 0 0 5px rgba(0,0,0,0.15);
-// }
 
 
 
 
-// .sub-subpages {
-//   margin-left: 1rem;
-//   padding-left: 0.5rem;
-//   border-left: 2px solid #ddd;
-//   list-style: none;
-// }
-// .sub-subpages a {
-//   font-size: 0.95em;
-//   color: #555;
-//   text-decoration: none;
-// }
-// .sub-subpages a:hover {
-//   color: #000;
-// }
-// .sub-subpages a.is-active {
-//   font-weight: bold;
-//   color: #000;
-// }
-
-
-
-// /* page: conflict year */
-// #year-label {
-//   font-weight: bold;
-//   margin-bottom: 1em;
-//   font-size: larger;
-// }
-
-// .map-wrapper {
-//   width: 100%;
-//   max-width: 1200px;       /* or whatever fits your layout */
-//   max-height: 800px; 
-//   height: 600px;          /* fixed height to contain zoom */
-//   overflow: hidden;       /* prevents the zoomed image from spilling out */
-//   margin: 0 auto;         /* center */
-//   position: relative;     /* required for Panzoom */
-//   z-index: 1;
-// }
-
-// #map-image {
-//   width: 100%;
-//   height: 100%;
-//   // max-width: 2000px;       /* or whatever fits your layout */
-//   // max-height: 1800px; 
-//   object-fit: contain;
-//   cursor: grab;
-//   transform-origin: center center;
-//   /* Panzoom will transform this image */
-// }
-
-// /* Bar + Text row */
-// .bar-text-row {
-//   display: flex;
-//   gap: 2em;
-//   align-items: flex-start;
-// }
-
-// .year-text {
-//   flex: 1;
-//   min-width: 300px;
-//   font-size: 22px;
-//   // font-weight: bolder;
-//   font-family: 'Century Gothic';
-//   text-align: justify;
-// }
-
-// .bar-images {
-//   flex: 1 1 100%; /* takes ~60% width */
-//   display: flex;
-//   justify-content: left; /* center bar horizontally */
-//   padding-top: 20px;
-//   padding-left: 20px;
-// }
-
-// #bar-image {
-//   // width: 75%; /* adjust bar width */
-//   max-height: 500px;
-//   object-fit: contain;
-// }
-
-
-// /* Container */
-// .year-slider-container {
-//   width: 100%;
-//   margin: 4em 0;
-// }
-
-// /* Slider itself */
-// #year-slider {
-//   -webkit-appearance: none; /* Remove default style (Chrome/Safari) */
-//   width: 100%;
-//   height: 8px; /* Height of track */
-//   background: #ddd;
-//   border-radius: 4px;
-//   outline: none;
-//   margin: 1em 0;
-// }
-
-// /* Track - Chrome/Safari */
-// #year-slider::-webkit-slider-runnable-track {
-//   height: 8px;
-//   background: #ddd;
-//   border-radius: 4px;
-// }
-
-// /* Track - Firefox */
-// #year-slider::-moz-range-track {
-//   height: 8px;
-//   background: #ddd;
-//   border-radius: 4px;
-// }
-
-// /* Thumb - Chrome/Safari */
-// #year-slider::-webkit-slider-thumb {
-//   -webkit-appearance: none;
-//   width: 22px;
-//   height: 22px;
-//   background: #333;
-//   border-radius: 50%;
-//   margin-top: -7px; /* Center the thumb over the track */
-//   cursor: pointer;
-// }
-
-// /* Thumb - Firefox */
-// #year-slider::-moz-range-thumb {
-//   width: 22px;
-//   height: 22px;
-//   background: #333;
-//   border-radius: 50%;
-//   cursor: pointer;
-// }
-
-// /* Optional: display tick marks (Firefox only) */
-// #year-slider::-moz-range-progress {
-//   background: #aaa;
-// }
-
-
-/* page: total */
-// .total-text {
-//   display: flex;
-//   flex-direction: column;
-//   // gap: 2em;
-//   align-items: start;
-// }    

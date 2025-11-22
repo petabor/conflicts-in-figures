@@ -1,3 +1,26 @@
+<!-- <header class="site-header">
+  <div class="horz-header">
+
+    <a class="site-logo" href="{{ "/" | relative_url }}">
+      <img src="{{ "/assets/images/logo_02.svg" | relative_url }}" alt="{{ site.title }}">
+    </a>
+
+    <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+
+    <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+
+    <ul class="nav-horz">
+      {% assign nav_horz_pages = site.pages | sort: "nav_order" %}
+      {% for page in nav_horz_pages %}
+        {% if page.bar == "horz" %}
+          <li><a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+  </div>
+</header> -->
+
 <header class="site-header">
   <div class="horz-header">
 
@@ -9,21 +32,21 @@
     <!-- Title -->
     <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
-    <!-- Hamburger button -->
+    <!-- Hamburger (mobile only) -->
     <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
-
-    <!-- Horizontal nav (desktop) -->
-    <ul class="nav-horz">
-      {% assign nav_horz_pages = site.pages | sort: "nav_order" %}
-      {% for page in nav_horz_pages %}
-        {% if page.bar == "horz" %}
-          <li><a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-
   </div>
+
+  <!-- horizontal nav separated so it can stack under title -->
+  <ul class="nav-horz">
+    {% assign nav_horz_pages = site.pages | sort: "nav_order" %}
+    {% for page in nav_horz_pages %}
+      {% if page.bar == "horz" %}
+        <li><a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 </header>
+
 
 <!-- Sidebar (vertical nav) -->
 <nav class="site-nav" id="sidebar">
