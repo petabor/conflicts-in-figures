@@ -50,7 +50,7 @@ main{
   display: flex;
   top: 0;
   z-index: 1000;
-  background: rgb(255, 255, 255);
+  background: rgb(187, 187, 187);
   border-top: 5px solid rgb(66, 66, 66);
   border-bottom: 3px solid #e8e8e8;
   justify-content: flex-start;
@@ -66,7 +66,8 @@ main{
   // margin-left: calc(var(--sidebar-w) + 50px);
   align-items: center;
   gap: 25px;
-  background-color: #7e7e7e;
+  background: rgb(187, 187, 187);
+  // background-color: #7e7e7e;
   // margin: 0 auto;
 
 }
@@ -124,7 +125,7 @@ main{
   display: block;
   padding: 4px 15px;           /* adjust to taste */
   text-decoration: none;
-  color: #0f0202;
+  color: #b9b9b9;
 }
 
 .nav-list-vert a:hover{
