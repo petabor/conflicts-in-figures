@@ -27,7 +27,7 @@ main{
   font-size: 16px;
 }
 
-.site-header { --header-h: 85px; } 
+
 
 .site-logo {                                  /* remove inline/descender weirdness */
   display: flex;
@@ -45,6 +45,8 @@ main{
 
 
 /* HEADERS */
+.site-header { --header-h: 85px; } 
+
 .site-header {
   position: sticky;
   display: flex;
@@ -99,6 +101,8 @@ main{
   text-decoration: none;
 }
 
+
+// side bar
 .site-nav{
   display: flex;
   position: fixed;
@@ -125,7 +129,7 @@ main{
   display: block;
   padding: 4px 15px;           /* adjust to taste */
   text-decoration: none;
-  color: #b9b9b9;
+  color: #f0f0f0;
 }
 
 .nav-list-vert a:hover{
