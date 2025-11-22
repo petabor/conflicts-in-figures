@@ -51,7 +51,7 @@ main{
   display: flex;
   top: 0;
   z-index: 1000;
-  background: rgb(187, 187, 187);
+  background: rgb(212, 212, 212);
   border-top: 5px solid rgb(66, 66, 66);
   border-bottom: 3px solid #e8e8e8;
   justify-content: flex-start;
@@ -67,7 +67,7 @@ main{
   // margin-left: calc(var(--sidebar-w) + 50px);
   align-items: center;
   gap: 25px;
-  background: rgb(187, 187, 187);
+  background: rgb(212, 212, 212);
   // background-color: #7e7e7e;
   // margin: 0 auto;
 
@@ -110,7 +110,7 @@ main{
   flex-direction: column;
   align-items: left;
   justify-content: right;
-  background-color: #f1f1f1;
+  // background-color: #f1f1f1;
   padding-top: 150px;
   overflow: auto;
   box-sizing: border-box;
@@ -149,12 +149,12 @@ main{
 }
 
 
-.site-nav,
-.nav-list-vert,
-.nav-list-vert a,
-.category-label {
-  font-family: 'Roboto', sans-serif;
-}
+// .site-nav,
+// .nav-list-vert,
+// .nav-list-vert a,
+// .category-label {
+//   font-family: 'Roboto', sans-serif;
+// }
 
 .category-toggle{ /* Hide the raw checkbox but keep it accessible */
   position: absolute;
