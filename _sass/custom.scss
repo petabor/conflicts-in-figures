@@ -70,7 +70,7 @@ main{
 }
 
 .nav-horz {
-  margin-left: auto;            /* << pushes the nav to the end */
+  // margin-left: auto;            /* << pushes the nav to the end */
   display: flex;
   align-items: center;
   gap: 2rem;                 /* instead of 5em */
