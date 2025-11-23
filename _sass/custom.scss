@@ -77,7 +77,7 @@ main{
   margin-left: auto;            /* << pushes the nav to the end */
   display: flex;
   align-items: center;
-  gap: 10rem;                 /* instead of 5em */
+  gap: 2rem;                 /* instead of 5em */
   list-style: none;
   margin-block: 0;
   padding: 0;
@@ -167,7 +167,7 @@ main{
   align-items: center;
   justify-content: space-between;
   width: 80%;
-  padding: 18px 35px;
+  padding: 12px 25px; //18px 35px;
   font-weight: 600;
   font-size: larger;
   cursor: pointer;
@@ -202,8 +202,8 @@ main{
   background: #b9b9b9;
 }
 
-.subpages .nav-link{ /* Indent child links a bit */
-  padding-left: 60px;
+.site-nav .subpages .nav-link{ /* Indent child links a bit */
+  padding-left: 40px; //60px
 }
 
 .nav-link.is-active{ /* highlight the current page link */
@@ -865,7 +865,7 @@ img[data-id="special"] {
     gap: 1rem;
     margin: 0.25rem 0 0.5rem 0;
     padding-left: 1rem;
-    border-top: 1px solid #eaeaea;
+    // border-top: 1px solid #eaeaea;
   }
 
   .nav-horz li a {
