@@ -66,10 +66,12 @@ main{
   // gap: 10px;
   // font-weight: bold;
   display: flex;
-  width: 900px;           /* fixed width */
-  margin-left: 150px;     /* align with content */
   align-items: center;
   gap: 10px;
+
+  max-width: 900px;
+  margin-left: calc(var(--sidebar-w) + 150px);
+  width: 100%;
 }
 
 .nav-horz {
