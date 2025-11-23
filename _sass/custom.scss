@@ -66,7 +66,7 @@ main{
   align-items: center;
   gap: 10px;
   margin-right: auto;
-  margin-left: 150px;
+  // margin-left: 150px;
 }
 
 .nav-horz {
@@ -77,6 +77,7 @@ main{
   list-style: none;
   margin-block: 0;
   padding: 0;
+  max-width: 900px;
 }
 
 .nav-horz li {
