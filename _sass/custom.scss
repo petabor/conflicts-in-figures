@@ -51,7 +51,7 @@ main{
   display: flex;
   top: 0;
   z-index: 1000;
-  background: rgb(212, 212, 212);
+  background: #e9e9e9;
   border-top: 5px solid rgb(66, 66, 66);
   border-bottom: 3px solid #000000;
   justify-content: flex-start;
@@ -199,7 +199,7 @@ main{
 }
 
 .category-label:hover{ /* Optional: hover/active states for the header row */
-  background: #e9e9e9;
+  background: #b9b9b9;
 }
 
 .subpages .nav-link{ /* Indent child links a bit */
@@ -207,7 +207,7 @@ main{
 }
 
 .nav-link.is-active{ /* highlight the current page link */
-  background: #555;
+  background: #7a7a7a;
   color: #f8f5f5;
 }
 
