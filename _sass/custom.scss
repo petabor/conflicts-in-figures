@@ -99,6 +99,13 @@ main{
   text-decoration: none;
 }
 
+.nav-horz li + li::before {
+  content: "|";
+  margin: 0 0.75rem;
+  color: #666;   /* adjust color if you like */
+}
+
+
 
 // side bar
 .site-nav{
