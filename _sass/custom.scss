@@ -60,24 +60,31 @@ main{
 }
 
 .horz-header {
+  // display: flex;
+  // max-width: 900px; /* or whatever */
+  // align-items: center;
+  // gap: 10px;
+  // font-weight: bold;
   display: flex;
-  max-width: 900px; /* or whatever */
-  // width: 100%;
+  width: 900px;           /* fixed width */
+  margin-left: 150px;     /* align with content */
   align-items: center;
   gap: 10px;
-  // margin-right: auto;
-  font-weight: bold;
-  // margin-left: 150px;
 }
 
 .nav-horz {
-  // margin-left: auto;            /* << pushes the nav to the end */
+  // display: flex;
+  // align-items: center;
+  // gap: 2rem;                 /* instead of 5em */
+  // list-style: none;
+  // margin-block: 0;
+  // padding: 0;
   display: flex;
-  align-items: center;
-  gap: 2rem;                 /* instead of 5em */
+  gap: 2rem;
+  margin-left: auto;      /* push nav to right edge of 900px box */
   list-style: none;
-  margin-block: 0;
   padding: 0;
+  margin-block: 0;
 }
 
 .nav-horz li {
